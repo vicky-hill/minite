@@ -1,0 +1,295 @@
+.grid {
+
+    /* ===================================
+       Grid Header
+    ==================================== */
+    &__header {
+        border-bottom: 1px solid #dbdbdb;
+
+        // Header title
+        &-title {
+            color: $dark;
+            font-family: 'Lato';
+            font-weight: 700;
+            letter-spacing: .8px;
+        }
+
+        // Header tabs
+        &-tabs {
+            display: flex;
+            align-items: center;
+
+            // Header tabs
+            & > div {
+                position: relative;
+                top: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 25px;
+                padding-bottom: 12px;
+                padding-right: 5px;
+                cursor: pointer;
+                border-bottom: 1px solid transparent;
+                color: #dbdbdb;
+                font-size: 13px;
+                letter-spacing: 1px;
+                transition: all .2s ease-out;
+
+                span {
+                    margin-right: 5px;
+
+                    svg {
+                        fill: #dbdbdb;
+                    }
+                }
+
+                // Active tab
+                &.active {
+                    border-bottom: 1px solid black;
+                    color: $dark;
+
+                    span {
+                        svg {
+                            fill: $dark;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Header info
+        &-info {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 2rem;
+
+            h1 {
+                font-size: 30px;
+                line-height: 1;
+         
+            }
+
+            p {
+                color: $grey-dark;
+                margin-left: 1.5rem;
+            }
+
+            &--mobile {
+                display: none;
+            }
+        }
+
+        // More actions dots
+        &-dots {
+            margin-left: auto;
+            margin-right: 15px !important;
+            cursor: pointer;
+        }
+    }
+
+
+    /* ===================================
+       Grid body
+    ==================================== */
+    &__body {
+        margin: 2rem auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 15px;
+
+        // Grid image
+        &-item {
+            overflow: hidden;
+            height: 0;
+            padding: 50% 0;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+
+            // If selected
+            &--selected::after {
+                content: '';
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        }
+    }
+
+
+    /* ===================================
+       Empty grid
+    ==================================== */
+    &__empty {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* ===================================
+       Grid modal
+    ==================================== */
+    &__modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, .99);
+        transition: opacity .4s ease-in-out;
+
+        &-carousel {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        &-slide {
+            height: 100%;
+            width: 100%;
+            flex-shrink: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-position: center;
+            background-size: cover;
+            backface-visibility: hidden;
+
+            img {
+                object-fit: cover;
+                backface-visibility: hidden;
+                z-index: 100;
+            }
+        }
+
+        // Navigation arrows
+        &-btn {
+            position: absolute;
+            top: 45%;
+            font-size: 2.5rem;
+            z-index: 2;
+            color: #fff;
+
+            &--left {
+                left: 5rem;
+            }
+
+            &--right {
+                right: 5rem;
+            }
+
+            &--close {
+                top: 4rem;
+                right: 5rem;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    /* ===================================
+       Grid Edit
+    ==================================== */
+
+    &__edit {
+        position: fixed;
+        bottom: 3rem;
+        right: 5rem;
+
+        // &--delete {
+
+        // }
+    }
+
+}
+
+// Disable body scrolling
+.no-scroll {
+    overflow: hidden;
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .grid {
+
+        // Header
+        &__header {
+            padding: 0 2rem;
+            border-bottom: none;
+
+            // Header tabs
+            &-tabs {
+                margin-top: 1.6rem;
+                margin-bottom: 5px;
+
+                &>div {
+                    margin-right: 15px;
+
+                    p {
+                        display: none;
+                    }
+
+                    &.active {
+                        border: none;
+                    }
+                }
+            }
+
+            // Header info
+            &-info {
+                margin-top: 1rem;
+                
+                &--mobile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                p { 
+                    margin: 0;
+                }
+            }
+
+            &-dots {
+                margin-right: 0 !important;
+            }
+        }
+
+        &__body {
+            margin: 0;
+            grid-gap: 1px;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &__modal {
+
+            &-btn--left {
+                left: 2.5rem;
+                top: 48%
+            }
+
+            &-btn--right {
+                right: 2.5rem;
+                top: 48%
+            }
+        }
+    }
+}
+
+
+
+
+
+

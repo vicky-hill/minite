@@ -1,0 +1,83 @@
+.bookmarks {
+    padding: 20px 0;
+    display: flex;
+    min-height: 500px;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    // Manage bookmarks title
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 20px;
+        }
+
+        span { 
+            cursor: pointer;
+        }
+    }
+
+    // Manage bookmarks item
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 25px;
+
+        // Ionicons icons
+        span:not(.bookmarks__reorder) {
+            margin-left: 15px;
+            margin-right: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                height: 18px;
+            }
+        }
+
+        // Item name
+        &-name {
+            font-family: lato;
+            letter-spacing: 1px;
+        }
+
+        &-edits {
+            opacity: 0;
+            pointer-events: none;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transition: 0.1s ease-in-out 0s;
+            cursor: pointer;
+
+            span {
+                margin: 0 !important;
+                margin-left: 10px !important;
+            }
+
+            &.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+    
+    // Manage bookmarks button
+    &__btn {
+        margin-top: auto;
+    }
+}
+
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .bookmarks {
+        padding: 10px;
+    }
+}

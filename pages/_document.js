@@ -7,6 +7,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <script src="https://kit.fontawesome.com/66e49c80d0.js" crossorigin="anonymous"></script>
       </body>
     </Html>
   )

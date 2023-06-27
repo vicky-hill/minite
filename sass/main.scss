@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+// Base
+@import "./base/variables";
+
+// Elements
+@import "./elements/navbar";
+@import "./elements/card";
+@import "./elements/button";
+@import "./elements/form";
+@import "./elements/alert";
+@import "./elements/spinner";
+@import "./elements/searchbar";
+@import "./elements/dropdown";
+@import "./elements/grid";
+@import "./elements/bottomNav";
+@import "./elements/modal";
+@import "./elements/input";
+
+// Components
+@import "./components/bookmarks";
+@import "./components/groups";
+@import "./components/modalForm";
+@import "./components/upload";
