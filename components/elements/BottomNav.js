@@ -1,32 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Home, Grid, Pricetag, Add, HomeOutline, GridOutline, PricetagOutline } from 'react-ionicons';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { uploadImages } from 'actions/images'
-import Modal from 'components/elements/Modal';
+import { useState, useEffect } from 'react'
+import { Home, Grid, Pricetag, Add, HomeOutline, GridOutline, PricetagOutline } from 'react-ionicons'
+import Modal from '@/components/elements/Modal'
 
-/* Props
-============================================================= */
-// navLinks: [icon: String, text: String]
-
-const BottomNav = ({ uploadImages, groups }) => {
+const BottomNav = ({ groups }) => {
 
     const navLinks = [
-        { icon: <HomeOutline height="1.8rem" />, iconActive: <Home height="1.8rem" />, text: 'Photos', link: '/'},
-        { icon: <GridOutline height="1.8rem" />, iconActive: <Grid height="1.8rem" />, text: 'Groups', link: '/groups'},
-        { icon: <PricetagOutline height="1.8rem" />, iconActive: <Pricetag height="1.8rem" />, text: 'Tags', link: '/' },
-        { icon: <Add height="1.8rem" />, iconActive: <Add height="1.8rem" />, text: 'Upload' }
+        { icon: <HomeOutline height="1.8rem" />, iconActive: <Home height="18px" />, text: 'Photos', link: '/' },
+        { icon: <GridOutline height="18px" />, iconActive: <Grid height="18px" />, text: 'Groups', link: '/groups' },
+        { icon: <PricetagOutline height="18px" />, iconActive: <Pricetag height="18px" />, text: 'Tags', link: '/' },
+        { icon: <Add height="18px" />, iconActive: <Add height="18px" />, text: 'Upload' }
     ]
 
-    const url = window.location.origin;
-    const path = window.location.pathname;
+
 
     useEffect(() => {
-        if (path === '/') {
-            setActive(0);
-        } else if (path.includes('groups')) {
-            setActive(1)
+        if (window) {
+            const url = window.location.origin;
+            const path = window.location.pathname;
+
+            if (path === '/') {
+                setActive(0);
+            } else if (path.includes('groups')) {
+                setActive(1)
+            }
         }
+
     })
 
     const [active, setActive] = useState(0);
@@ -64,7 +62,7 @@ const BottomNav = ({ uploadImages, groups }) => {
     }
 
     const handleUpload = () => {
-        uploadImages(uploadFiles, groups[uploadGroup]);
+        // uploadImages(uploadFiles, groups[uploadGroup]);
         resetUploadModal();
     }
 
@@ -81,14 +79,14 @@ const BottomNav = ({ uploadImages, groups }) => {
                     >
                         {active === i ? link.iconActive : link.icon}
 
-                        { i !== 3 ? <span className='bottom-nav-text'>{link.text}</span> : (
+                        {i !== 3 ? <span className='bottom-nav-text'>{link.text}</span> : (
                             <span className='bottom-nav-text' onClick={realFileClick}>
                                 <input type="file" name="" id="real-file" hidden="hidden" multiple onChange={selectFiles} />
                                 Upload
-                            
+
                             </span>
                         )}
-                        
+
                     </button>
                 ))
             }
@@ -97,9 +95,6 @@ const BottomNav = ({ uploadImages, groups }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    groups: state.groups.groups
-})
 
 
-export default connect(mapStateToProps, { uploadImages })(BottomNav);
+export default BottomNav;

@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Link from 'next/link'
 import Searchbar from './Searchbar'
 import logoPng from '@/public/images/logo.png'
 import { Dropdown, DropdownItem, DropdownButton } from '@/components/elements/Dropdown'
+import UserContext from '@/context/UserContext'
 
 
-function Navbar({ authenticated, username, logout }) {
-
+function Navbar({ logout }) {
     const [currentURL, setCurrentURL] = useState('register');
     const [dropdown, setDropdown] = useState(false);
+
+    const { currentUser } = useContext(UserContext);
 
     useEffect(() => {
         const unsubscribe = document.addEventListener('click', (e) => {
@@ -73,13 +75,11 @@ function Navbar({ authenticated, username, logout }) {
         </div>
     )
 
-
-
     return (
         <div className='header'>
 
             {/* Desktop Menu */}
-            {authenticated ? loggedInNav : loggedOutNav}
+            {currentUser ? loggedInNav : loggedOutNav}
 
         </div>
     )

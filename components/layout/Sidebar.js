@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { uploadImages } from 'actions/images'
-import Modal from 'components/elements/Modal';
+import { useState, useEffect } from 'react'
+import Modal from '@/components/elements/Modal'
+import Link from 'next/link'
 
 import { Home, HomeOutline, Grid, GridOutline, Pricetag, Add, PricetagOutline } from 'react-ionicons'
 
-const Sidebar = ({ uploadImages, groups }) => {
-
-    const path = window.location.pathname;
+const Sidebar = ({ groups }) => {
 
     const [active, setActive] = useState(0);
     const [uploadModal, setUploadModal] = useState(false);
@@ -25,9 +21,10 @@ const Sidebar = ({ uploadImages, groups }) => {
 
 
     useEffect(() => {
-        if (path === '/') {
+
+        if (window && window.location.pathname === '/') {
             setActive(0);
-        } else if (path.includes('groups')) {
+        } else if (window && window.location.pathname.includes('groups')) {
             setActive(1)
         }
     })
@@ -49,7 +46,7 @@ const Sidebar = ({ uploadImages, groups }) => {
     }
 
     const handleUpload = () => {
-        uploadImages(uploadFiles, groups[uploadGroup]);
+        // uploadImages(uploadFiles, groups[uploadGroup]);
         resetUploadModal();
     }
 
@@ -57,13 +54,13 @@ const Sidebar = ({ uploadImages, groups }) => {
     return (
         <>
             <ul className='sidebar'>
-                <Link to="/">
+                <Link href="/">
                     <li className={getClasses(0)} >
                         {active === 0 ? <Home height="17px" /> : <HomeOutline height="17px" />}
                         <p>Photos</p>
                     </li>
                 </Link>
-                <Link to="/groups">
+                <Link href="/groups">
                     <li className={getClasses(1)} >
                         {active === 1 ? <Grid height="17px" /> : <GridOutline height="17px" />}
                         <p>Groups</p>
@@ -116,11 +113,6 @@ const Sidebar = ({ uploadImages, groups }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    groups: state.groups.groups
-})
-
-
-export default connect(mapStateToProps, { uploadImages })(Sidebar);
+export default Sidebar;
 
 

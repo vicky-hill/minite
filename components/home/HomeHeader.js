@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { EllipsisHorizontal } from 'react-ionicons';
-import { darkIcons } from '../../utils/icons';
-import { Dropdown, DropdownItem, DropdownButton } from 'components/elements/Dropdown';
+import { useState, useEffect } from 'react'
+import { EllipsisHorizontal } from 'react-ionicons'
+import { darkIcons } from '@/utils/icons'
+import { Dropdown, DropdownItem, DropdownButton } from '@/components/elements/Dropdown'
 
-const HomeHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
+const HomeHeader = ({ bookmarks, active, setActive }) => {
     const [dropdown, setDropdown] = useState(false);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const HomeHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
 
             <div className='grid__header-tabs'>
                 {
-                    bookmarks.map((bookmark, i) => (
+                    bookmarks && bookmarks.map((bookmark, i) => (
                         <div
                             key={i}
                             className={`${i === active ? 'active' : ''}`}
@@ -46,7 +46,7 @@ const HomeHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
                         </button>
                         
                     </DropdownButton>
-                    <DropdownItem onClick={openManageBookmarks}>Manage Bookmarks</DropdownItem>
+                    <DropdownItem onClick={() => console.log('open bookmarks manager')}>Manage Bookmarks</DropdownItem>
                 </Dropdown>
 
             </div>

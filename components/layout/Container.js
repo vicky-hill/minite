@@ -1,6 +1,6 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import BottomNav from 'components/elements/BottomNav';
+import React from 'react'
+import Sidebar from './Sidebar'
+import BottomNav from '@/components/elements/BottomNav'
 
 
 function Container({ children }) {

@@ -1,0 +1,116 @@
+/* ===================================
+   Container
+==================================== */
+.container {
+    margin-left: 12rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-top: 14rem - 6.5rem;
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 90rem;
+}
+
+// 100% fit in padded container
+.make-fit {
+    transform: translateX(-6rem) !important;
+    width: calc(100% + 12rem) !important;
+}
+
+
+/* ===================================
+   Sidebar
+==================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22rem;
+    height: 100%;
+    background: #ffffff;
+    padding-top: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: scroll;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 50px;
+        color: $dark;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+
+        p {
+            margin-left: 10px;
+        }
+
+        &--active {
+            font-weight: 600;
+        }
+
+        &:hover,
+        &:hover > span svg {
+            fill: $secondary;
+            color: $secondary;
+        }
+    }
+
+    &__btn {
+        margin-top: 10px;
+        min-width: 120px !important;
+        padding-left: 22px !important;
+
+        p {
+            margin-left: 2px;
+            font-weight: 700;
+        }
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}
+
+
+@media only screen and (max-width : $breakpoint-lg) {
+
+    // Stretch everything in main
+    .main section .row .col-1,
+    .main section .row .col-2,
+    .main section .row .col-3,
+    .main section .row .col-4,
+    .main section .row .col-5,
+    .main section .row .col-6,
+    .main section .row .col-7,
+    .main section .row .col-8,
+    .main section .row .col-9,
+    .main section .row .col-10,
+    .main section .row .col-11,
+    .main section .row .col-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width : $breakpoint-md) {
+    .container {
+        margin: 0rem auto;
+        padding-top: 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .main {
+        padding: 25px;
+    }
+}
