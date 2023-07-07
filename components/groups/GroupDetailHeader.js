@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { DropdownButton, DropdownItem, Dropdown } from 'components/elements/Dropdown';
+import { useState, useEffect } from 'react'
+import { DropdownButton, DropdownItem, Dropdown } from '@/components/elements/Dropdown'
 import { EllipsisHorizontal } from 'react-ionicons'
-import GroupToggle from './GroupToggle';
-import Modal from 'components/elements/Modal';
-import LeaveGroup from './LeaveGroup';
+import Modal from '@/components/elements/Modal'
+import LeaveGroup from '@/components/groups/LeaveGroup'
 
 
-const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup, members }) => {
+const GroupDetailHeader = ({isPrivate, title, deleteGroup }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
     const openConfirmation = () => {
-        isPrivate ? setModal('Delete Group') : setModal('Leave Group')
+       setModal('Delete Group')
     }
 
     useEffect(() => {
@@ -69,14 +68,6 @@ const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup, membe
             <div className='grid__header-info'>
 
                 <h1 className="hide-mobile">{ title }</h1>
-
-                {!isPrivate && (
-                    <>
-                        <p>{members.length} Members</p>
-                        <GroupToggle showAll={showAllImages} resource='photo' className={`${!isPrivate ? 'ml-auto' : ''}`} />
-                    </>
-                )}
-
                 {window.innerWidth > 480 && <MoreOptionsDropdown mobile={false} isPrivate={isPrivate} />}
 
             </div>
