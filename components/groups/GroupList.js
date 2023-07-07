@@ -1,5 +1,4 @@
-import React from 'react';
-import GroupListItem from './GroupListItem';
+import GroupListItem from './GroupListItem'
 
 const GroupList = ({ groups }) => {
 

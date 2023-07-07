@@ -2,21 +2,21 @@
    Container
 ==================================== */
 .container {
-    margin-left: 12rem;
+    margin-left: 120px;
     padding-left: 0rem;
     padding-right: 0rem;
-    padding-top: 14rem - 6.5rem;
+    padding-top: 140px - 65px;
 }
 
 .content {
     margin: 0 auto;
-    max-width: 90rem;
+    max-width: 900px;
 }
 
 // 100% fit in padded container
 .make-fit {
-    transform: translateX(-6rem) !important;
-    width: calc(100% + 12rem) !important;
+    transform: translateX(-60px) !important;
+    width: calc(100% + 120px) !important;
 }
 
 
@@ -27,10 +27,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 22rem;
+    width: 220px;
     height: 100%;
     background: #ffffff;
-    padding-top: 14rem;
+    padding-top: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -55,10 +55,10 @@
             font-weight: 600;
         }
 
-        &:hover,
-        &:hover > span svg {
-            fill: $secondary;
-            color: $secondary;
+        &:not(.sidebar__link--active):hover,
+        &:not(.sidebar__link--active):hover > span svg {
+            fill: $grey-dark;
+            color: $grey-dark;
         }
     }
 
@@ -100,7 +100,7 @@
 
 @media only screen and (max-width : $breakpoint-md) {
     .container {
-        margin: 0rem auto;
+        margin: 0 auto;
         padding-top: 0;
     }
 

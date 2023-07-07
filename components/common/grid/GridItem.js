@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import useLongPress from 'hooks/useLongPress';
+import React, { useEffect } from 'react'
+import useLongPress from '@/hooks/useLongPress'
+import getImage from '@/utils/getImage'
+
 
 
 const GridItem = ({ openGridModal, imageId, imageURL, i, startSelection, selection, isSelected, toggleSelectedImage }) => {
 
-    const onLongPress = () => {
-        startSelection();
-        toggleSelectedImage(imageId)
-    };
+    // const onLongPress = () => {
+    //     startSelection();
+    //     toggleSelectedImage(imageId)
+    // };
 
     const onClick = () => {
         if(selection) {
@@ -22,11 +24,12 @@ const GridItem = ({ openGridModal, imageId, imageURL, i, startSelection, selecti
         delay: 200,
     };
 
-    const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
+    // const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
 
     return (
         <div 
-            {...longPressEvent}
+            // {...longPressEvent}
+            onClick={onClick}
             className={`grid__body-item ${isSelected && 'grid__body-item--selected'}`}
             style={{ backgroundImage: `url(${imageURL})`}}
         >

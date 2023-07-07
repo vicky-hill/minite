@@ -1,11 +1,16 @@
+import { useContext } from 'react'
+import ImageContext from '@/context/ImageContext'
 import Head from 'next/head'
 import Container from '@/components/layout/Container'
 import HomeHeader from '@/components/home/HomeHeader'
+import Grid from '@/components/common/grid/Grid'
 
 export default function Home() {
+
+  const { images, bookmarks, activeBookmark, setActiveBookmark } = useContext(ImageContext);
   
   const setActive = (index) => {
-    
+    setActiveBookmark(index);
   }
 
   return (
@@ -16,7 +21,10 @@ export default function Home() {
       </Head>
 
       <Container>
-        <HomeHeader active={1} setActive={setActive} />
+        <HomeHeader active={activeBookmark} setActive={setActive} bookmarks={bookmarks}/>
+
+        { images && <Grid images={images} />}
+
       </Container>
     </>
   )

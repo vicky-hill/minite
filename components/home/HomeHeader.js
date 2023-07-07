@@ -23,7 +23,7 @@ const HomeHeader = ({ bookmarks, active, setActive }) => {
     return (
         <div className='grid__header'>
 
-            <h1 className='grid__header-title hide-desktop'>All Photos</h1>
+            {/* <h1 className='grid__header-title hide-desktop'>All Photos</h1> */}
 
             <div className='grid__header-tabs'>
                 {

@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import GridItem from './GridItem';
-import GridEmpty from './GridEmpty';
-import GridModal from './GridModal';
-import { connect } from 'react-redux'
-import { startSelection, endSelection } from 'actions/edit'
-import { deleteImages } from 'actions/images'
-import { Trash2 } from 'react-feather';
+import React, { useState, useEffect } from 'react'
+import GridItem from './GridItem'
+import GridEmpty from './GridEmpty'
+import GridModal from './GridModal'
+import { Trash2 } from 'react-feather'
 
-const Grid = ({ images, selection, startSelection, endSelection, deleteImages }) => {
+const Grid = ({ images }) => {
 
     const [currentIndex, setCurrentIndex] = useState(null);
     const [selected, setSelected] = useState([]);
 
-    useEffect(() => {
-        const unsubscribe = document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                endSelection();
-                setSelected([])
-            }
-        })
+    // useEffect(() => {
+    //     const unsubscribe = document.addEventListener('keydown', function (e) {
+    //         if (e.key === 'Escape') {
+    //             endSelection();
+    //             setSelected([])
+    //         }
+    //     })
 
-        return unsubscribe;
-    }, []) /* eslint-disable-line */
+    //     return unsubscribe;
+    // }, []) /* eslint-disable-line */
 
 
     const openGridModal = (image, index) => {
@@ -34,18 +31,18 @@ const Grid = ({ images, selection, startSelection, endSelection, deleteImages })
         setCurrentIndex(null);
     }
 
-    const toggleSelectedImage = (id) => {
-        const result = [...selected];
+    // const toggleSelectedImage = (id) => {
+    //     const result = [...selected];
 
-        if (selected.includes(id)) {
-            const index = selected.indexOf(id);
-            result.splice(index, 1)
-            setSelected(result)
-        } else {
-            result.push(id)
-            setSelected(result);
-        }
-    }
+    //     if (selected.includes(id)) {
+    //         const index = selected.indexOf(id);
+    //         result.splice(index, 1)
+    //         setSelected(result)
+    //     } else {
+    //         result.push(id)
+    //         setSelected(result);
+    //     }
+    // }
 
 
     const imageGrid = (
@@ -56,12 +53,12 @@ const Grid = ({ images, selection, startSelection, endSelection, deleteImages })
                     images.map((image, i) => (
                         <GridItem
                             isSelected={selected.includes(image._id)}
-                            toggleSelectedImage={toggleSelectedImage}
-                            startSelection={startSelection}
-                            selection={selection}
+                            // toggleSelectedImage={toggleSelectedImage}
+                            // startSelection={startSelection}
+                            // selection={selection}
                             key={image._id}
                             openGridModal={openGridModal}
-                            imageURL={`https://minite-bucket.s3.us-west-1.amazonaws.com/${image.url}`}
+                            imageURL={`${process.env.IMAGE_URL}/${image.url}`}
                             imageId={image._id}
                             i={i}
                         />
@@ -69,11 +66,11 @@ const Grid = ({ images, selection, startSelection, endSelection, deleteImages })
                 }
             </div>
 
-            {selection && (
+            {/* {selection && (
                 <div className="grid__edit">
                     <Trash2 size="20px" onClick={() => deleteImages(selected)} />
                 </div>
-            )}
+            )} */}
 
 
 
@@ -96,9 +93,4 @@ const Grid = ({ images, selection, startSelection, endSelection, deleteImages })
     )
 }
 
-
-const mapStateToProps = state => ({
-    selection: state.edit.selection
-})
-
-export default connect(mapStateToProps, { startSelection, endSelection, deleteImages })(Grid);
+export default Grid;

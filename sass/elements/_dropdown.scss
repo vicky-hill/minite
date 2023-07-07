@@ -67,12 +67,3 @@
 .dropdown-item:focus {
     background-color: #e9ecef;
 }
-
-
-// Active
-.dropdown-item.active,
-.dropdown-item:active {
-  color: #fff;
-  text-decoration: none;
-  background-color: $secondary;
-}

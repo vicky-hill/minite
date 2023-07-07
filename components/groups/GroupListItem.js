@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 
 const GroupListItem = ({ title, images, id }) => {
@@ -7,7 +6,7 @@ const GroupListItem = ({ title, images, id }) => {
     const imageCount = images.length;
 
     return (
-        <Link to={`/groups/${id}`} className="group__list-item">
+        <Link href={`/groups/${id}`} className="group__list-item">
                 <div className="group__list-item--image"></div>
                 <div>
                     <h1 className="group__list-item--title">{title}</h1>
